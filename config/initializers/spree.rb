@@ -18,3 +18,4 @@ Rails.application.config.after_initialize do
 end
 
 Spree.user_class = 'Spree::User'
+Spree::Api::Dependencies.storefront_user_serializer = 'UserSerializerExtension'
