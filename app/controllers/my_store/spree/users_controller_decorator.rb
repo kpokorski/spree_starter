@@ -5,7 +5,12 @@ module MyStore
 
       def user_params
 
-        permitted_user_attributes.append(:profile_picture)
+
+        params.require(:user).permit(permitted_user_attributes.append(:profile_picture) |
+                                       [:use_billing,
+                                        spree_role_ids: [],
+                                        ship_address_attributes: permitted_address_attributes,
+                                        bill_address_attributes: permitted_address_attributes])
       end
     end
   end

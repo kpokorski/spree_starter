@@ -1,7 +1,8 @@
 class UserSerializerExtension < Spree::V2::Storefront::UserSerializer
-  set_type :user
 
-  attributes :profile_picture, :imm
-
+  attribute :profile_picture do |picture|
+    # sprawdz jaki obiekt dokladnie jest w `picture` czy User
+    ActiveStorage::Blob.service.path_for(picture.key)
+  end
 
 end
